@@ -1,6 +1,6 @@
 const input = document.getElementById("amigo");
 const nombres = [];
-const lu = document.getElementById("listaAmigos");
+const listaAmigos = document.getElementById("listaAmigos");
 const resultado = document.getElementById("resultado");
 const sorteo = document.createElement("li");
 
@@ -12,7 +12,7 @@ function agregarAmigo(){
 
         const li=document.createElement("li");
         li.textContent=nombre;
-        lu.appendChild(li);
+        listaAmigos.appendChild(li);
         input.value = "";
         input.focus()
     }
@@ -24,8 +24,12 @@ function agregarAmigo(){
 
 function sortearAmigo(boton){
 
+    if(nombres.length === 0 ||nombres.length === 1){
+        alert("Primero debes agregar al menos 2 nombres")
+        return;
+    }
     sorteo.textContent = "tu amigo secreto es: " + nombres[Math.floor(Math.random()*nombres.length)];
     resultado.appendChild(sorteo);
-    lu.remove();
+    listaAmigos.remove();
     boton.disabled = true;
 }
