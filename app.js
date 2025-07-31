@@ -4,10 +4,14 @@ const listaAmigos = document.getElementById("listaAmigos");
 const resultado = document.getElementById("resultado");
 const sorteo = document.createElement("li");
 
+let numero = 0;
+
 function agregarAmigo(){
     const nombre = input.value.trim();
-
-    if(nombre !== ""){
+    if(numero==1){
+        return;
+    }
+    else if(nombre !== ""){
         nombres.push(nombre);
 
         const li=document.createElement("li");
@@ -24,6 +28,7 @@ function agregarAmigo(){
 
 function sortearAmigo(boton){
 
+
     if(nombres.length === 0 ||nombres.length === 1){
         alert("Primero debes agregar al menos 2 nombres")
         return;
@@ -32,4 +37,6 @@ function sortearAmigo(boton){
     resultado.appendChild(sorteo);
     listaAmigos.remove();
     boton.disabled = true;
+    input.disabled = true;
+    numero++;
 }
